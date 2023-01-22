@@ -1,8 +1,8 @@
 {
   "name": "@d-exclaimation/common/union",
   "type": "module",
-  "module": "./lib/union/index.js",
-  "main": "./lib/union/index.cjs",
-  "types": "./lib/union/index.d.ts",
+  "module": "../lib/union/index.js",
+  "main": "../lib/union/index.cjs",
+  "types": "../lib/union/index.d.ts",
   "sideEffects": false
 }

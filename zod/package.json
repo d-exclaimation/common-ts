@@ -1,8 +1,8 @@
 {
   "name": "@d-exclaimation/common/zod",
   "type": "module",
-  "module": "./lib/zod/index.js",
-  "main": "./lib/zod/index.cjs",
-  "types": "./lib/zod/index.d.ts",
+  "module": "../lib/zod/index.js",
+  "main": "../lib/zod/index.cjs",
+  "types": "../lib/zod/index.d.ts",
   "sideEffects": false
 }

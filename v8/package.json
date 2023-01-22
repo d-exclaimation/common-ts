@@ -1,8 +1,8 @@
 {
   "name": "@d-exclaimation/common/v8",
   "type": "module",
-  "module": "./lib/v8/index.js",
-  "main": "./lib/v8/index.cjs",
-  "types": "./lib/v8/index.d.ts",
+  "module": "../lib/v8/index.js",
+  "main": "../lib/v8/index.cjs",
+  "types": "../lib/v8/index.d.ts",
   "sideEffects": false
 }

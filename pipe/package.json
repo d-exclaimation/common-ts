@@ -2,8 +2,8 @@
 {
   "name": "@d-exclaimation/common/pipe",
   "type": "module",
-  "module": "./lib/pipe/index.js",
-  "main": "./lib/pipe/index.cjs",
-  "types": "./lib/pipe/index.d.ts",
+  "module": "../lib/pipe/index.js",
+  "main": "../lib/pipe/index.cjs",
+  "types": "../lib/pipe/index.d.ts",
   "sideEffects": false
 }
