@@ -1,0 +1,71 @@
+{
+  "name": "@d-exclaimation/common",
+  "author": "d-exclaimation",
+  "version": "0.0.0-rc.1",
+  "description": "Common utilites for Typescript / Javascript",
+  "license": "MIT",
+  "type": "module",
+  "keywords": [
+    "typescript", 
+    "functional", 
+    "functional programming",
+    "pipe",
+    "zod",
+    "validation",
+    "struct",
+    "extensions",
+    "v8",
+    "microtask",
+    "macrotask",
+    "union",
+    "pattern matching"
+  ],
+  "main": "./lib/index.cjs",
+  "module": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./lib/index.js",
+      "require": "./lib/index.cjs",
+      "types": "./lib/index.d.ts"
+    },
+    "./zod": {
+      "import": "./lib/zod/index.js",
+      "require": "./lib/zod/index.cjs",
+      "types": "./lib/zod/index.d.ts"
+    },
+    "./union": {
+      "import": "./lib/union/index.js",
+      "require": "./lib/union/index.cjs",
+      "types": "./lib/union/index.d.ts"
+    },
+    "./v8": {
+      "import": "./lib/v8/index.ts",
+      "require": "./lib/v8/index.cjs",
+      "types": "./lib/v8/index.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "tsup --format cjs,esm --treeshake --splitting --dts",
+    "lint": "tsc"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "tsup": "^6.5.0",
+    "typescript": "^4.9.4",
+    "zod": "^3.20.2"
+  },
+  "tsup": {
+    "entry": {
+      "index": "src/index.ts",
+      "zod/index": "src/zod/index.ts",
+      "union/index": "src/union/index.ts",
+      "v8/index": "src/v8/index.ts"
+    },
+    "outDir": "lib",
+    "clean": true,
+    "treeshake": true,
+    "splitting": true
+  }
+}
