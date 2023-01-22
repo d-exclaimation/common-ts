@@ -5,6 +5,7 @@
 
   <h6>Zero-dependency TypeScript utilties for Node.js, Deno, Web and anything that powered by V8.</h6>
 
+  <br/>
 </div>
 
 ## Getting started

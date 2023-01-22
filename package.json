@@ -28,9 +28,9 @@
     "union",
     "pattern matching"
   ],
-  "main": "./lib/index.cjs",
-  "module": "./lib/index.js",
-  "types": "./lib/index.d.ts",
+  "main": "lib/index.cjs",
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
   "exports": {
     ".": {
       "import": "./lib/index.js",
@@ -53,6 +53,17 @@
       "types": "./lib/v8/index.d.ts"
     },
     "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=12"
   },
   "scripts": {
     "prepublish": "pnpm build",
