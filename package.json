@@ -2,8 +2,16 @@
   "name": "@d-exclaimation/common",
   "author": "d-exclaimation",
   "version": "0.0.0-rc.1",
-  "description": "Common utilites for Typescript / Javascript",
+  "description": "Zero-dependency TypeScript utilties for Node.js, Deno, Web and anything that powered by V8",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/d-exclaimation/common-ts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/d-exclaimation/common-ts/issues"
+  },
+  "homepage": "https://github.com/d-exclaimation/common-ts#readme",
   "type": "module",
   "keywords": [
     "typescript", 
@@ -47,6 +55,7 @@
     "./package.json": "./package.json"
   },
   "scripts": {
+    "prepublish": "pnpm build",
     "build": "tsup --format cjs,esm --treeshake --splitting --dts",
     "lint": "tsc"
   },
