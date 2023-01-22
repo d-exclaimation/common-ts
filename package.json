@@ -1,7 +1,7 @@
 {
   "name": "@d-exclaimation/common",
   "author": "d-exclaimation",
-  "version": "0.0.1-rc.5",
+  "version": "0.0.1-rc.3",
   "description": "Zero-dependency TypeScript utilties for Node.js, Deno, Web and anything that powered by V8",
   "license": "MIT",
   "repository": {
@@ -27,42 +27,48 @@
     "union",
     "pattern matching"
   ],
-  "main": "lib/index.js",
-  "module": "lib/index.mjs",
+  "type": "module",
+  "main": "lib/index.cjs",
+  "module": "lib/index.js",
   "types": "lib/index.d.ts",
   "exports": {
     ".": {
-      "import": "./lib/index.mjs",
-      "require": "./lib/index.js",
+      "import": "./lib/index.js",
+      "require": "./lib/index.cjs",
       "types": "./lib/index.d.ts"
     },
-    "./lib/zod": {
-      "import": "./lib/zod/index.mjs",
-      "require": "./lib/zod/index.js",
+    "./*": {
+      "import": "./lib/*/index.js",
+      "require": "./lib/*/index.cjs",
+      "types": "./lib/*/index.d.ts" 
+    },
+    "./zod": {
+      "import": "./lib/zod/index.js",
+      "require": "./lib/zod/index.cjs",
       "types": "./lib/zod/index.d.ts"
     },
-    "./lib/union": {
-      "import": "./lib/union/index.mjs",
-      "require": "./lib/union/index.js",
+    "./union": {
+      "import": "./lib/union/index.js",
+      "require": "./lib/union/index.cjs",
       "types": "./lib/union/index.d.ts"
     },
-    "./lib/v8": {
-      "import": "./lib/v8/index.mjs",
-      "require": "./lib/v8/index.js",
+    "./v8": {
+      "import": "./lib/v8/index.js",
+      "require": "./lib/v8/index.cjs",
       "types": "./lib/v8/index.d.ts"
     },
-    "./lib/pipe": {
-      "import": "./lib/pipe/index.mjs",
-      "require": "./lib/pipe/index.js",
+    "./pipe": {
+      "import": "./lib/pipe/index.js",
+      "require": "./lib/pipe/index.cjs",
       "types": "./lib/pipe/index.d.ts"
     },
     "./package.json": "./package.json"
   },
   "files": [
     "lib",
+    "tsconfig.json",
     "README.md",
-    "LICENSE",
-    "tsconfig.json"
+    "LICENSE"
   ],
   "publishConfig": {
     "access": "public"
