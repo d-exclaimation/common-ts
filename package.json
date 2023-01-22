@@ -1,7 +1,7 @@
 {
   "name": "@d-exclaimation/common",
   "author": "d-exclaimation",
-  "version": "0.0.1-rc.2",
+  "version": "0.0.1-rc.3",
   "description": "Zero-dependency TypeScript utilties for Node.js, Deno, Web and anything that powered by V8",
   "license": "MIT",
   "repository": {
@@ -86,6 +86,7 @@
       "index": "src/index.ts",
       "zod/index": "src/zod/index.ts",
       "union/index": "src/union/index.ts",
+      "pipe/index": "src/pipe/index.ts",
       "v8/index": "src/v8/index.ts"
     },
     "outDir": "lib",
