@@ -52,6 +52,11 @@
       "require": "./lib/v8/index.cjs",
       "types": "./lib/v8/index.d.ts"
     },
+    "./pipe": {
+      "import": "./lib/pipe/index.ts",
+      "require": "./lib/pipe/index.cjs",
+      "types": "./lib/pipe/index.d.ts"
+    },
     "./package.json": "./package.json"
   },
   "files": [
