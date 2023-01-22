@@ -1,7 +1,7 @@
 {
   "name": "@d-exclaimation/common",
   "author": "d-exclaimation",
-  "version": "0.0.1-rc.4",
+  "version": "0.0.1-rc.5",
   "description": "Zero-dependency TypeScript utilties for Node.js, Deno, Web and anything that powered by V8",
   "license": "MIT",
   "repository": {
@@ -36,22 +36,22 @@
       "require": "./lib/index.js",
       "types": "./lib/index.d.ts"
     },
-    "./zod": {
+    "./lib/zod": {
       "import": "./lib/zod/index.mjs",
       "require": "./lib/zod/index.js",
       "types": "./lib/zod/index.d.ts"
     },
-    "./union": {
+    "./lib/union": {
       "import": "./lib/union/index.mjs",
       "require": "./lib/union/index.js",
       "types": "./lib/union/index.d.ts"
     },
-    "./v8": {
+    "./lib/v8": {
       "import": "./lib/v8/index.mjs",
       "require": "./lib/v8/index.js",
       "types": "./lib/v8/index.d.ts"
     },
-    "./pipe": {
+    "./lib/pipe": {
       "import": "./lib/pipe/index.mjs",
       "require": "./lib/pipe/index.js",
       "types": "./lib/pipe/index.d.ts"
@@ -61,7 +61,8 @@
   "files": [
     "lib",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "tsconfig.json"
   ],
   "publishConfig": {
     "access": "public"
