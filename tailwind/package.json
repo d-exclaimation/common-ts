@@ -1,0 +1,8 @@
+{
+  "name": "@d-exclaimation/common/tailwind",
+  "type": "module",
+  "module": "../lib/tailwind/index.js",
+  "main": "../lib/tailwind/index.cjs",
+  "types": "../lib/tailwind/index.d.ts",
+  "sideEffects": false
+}
