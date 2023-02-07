@@ -48,41 +48,58 @@ export type Hue =
   | "rose";
 
 /**
- * Tailwind base color palette (without prefix)
+ * Tailwind default opacity options
  */
-export type BaseColor =
+export type Opacity =
+  | "0"
+  | "5"
+  | "10"
+  | "20"
+  | "25"
+  | "30"
+  | "40"
+  | "50"
+  | "60"
+  | "70"
+  | "75"
+  | "80"
+  | "90"
+  | "95"
+  | "100";
+
+/**
+ * Tailwind arbitary value
+ */
+export type Arbitary = `[${string}]`;
+
+/**
+ * Base color palette without prefix and opacity
+ */
+export type Base =
   | `${Hue}-${Lightness}`
   | "white"
   | "black"
-  | "transparent";
+  | "transparent"
+  | "current"
+  | Arbitary;
 
 /**
- * Tailwind text color palette
+ * Base color palette with opacity but without prefix
  */
-export type TextColor = `text-${BaseColor}`;
+export type BaseWithOpacity = Base | `${Base}/${Opacity | Arbitary}`;
 
 /**
- * Tailwind background color palette
+ * Tailwind color with custom prefix
  */
-export type BgColor = `bg-${BaseColor}`;
-
-/**
- * Tailwind decoration color palette
- */
-export type DecorationColor = `decoration-${BaseColor}`;
-
-/**
- * Tailwind color palette with custom prefix
- */
-export type Color<Prefix extends string> = `${Prefix}-${BaseColor}`;
+export type Color<Prefix extends string> = `${Prefix}-${BaseWithOpacity}`;
 
 /**
  * Tailwind color palette with extended hue
  */
 export type ExtendHue<
-  T extends `${string}-${BaseColor}`,
+  T extends Color<string>,
   Options extends string
-> = T extends `${infer Prefix}-${BaseColor}`
+> = T extends Color<infer Prefix>
   ? `${Prefix}-${Hue | Options}-${Lightness}`
   : T;
 
@@ -90,8 +107,31 @@ export type ExtendHue<
  * Tailwind color palette with extended color (without lightness)
  */
 export type ExtendBase<
-  T extends `${string}-${BaseColor}`,
+  T extends Color<string>,
   Options extends string
-> = T extends `${infer Prefix}-${BaseColor}`
-  ? `${Prefix}-${BaseColor | Options}`
+> = T extends Color<infer Prefix>
+  ? `${Prefix}-${Base | Options | `${Base | Options}/${Opacity | Arbitary}`}`
   : T;
+
+/**
+ * Tailwind default color prefixes
+ */
+export type ColorPrefixes =
+  | "bg"
+  | "text"
+  | "decoration"
+  | "border"
+  | "divide"
+  | "outline"
+  | "ring"
+  | "ring-offset"
+  | "shadow"
+  | "accent"
+  | "caret";
+
+/**
+ * Tailwind color palette
+ */
+export type Palette = {
+  [Prefix in ColorPrefixes]: Color<Prefix>;
+};
