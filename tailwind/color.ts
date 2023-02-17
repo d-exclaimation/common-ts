@@ -80,38 +80,17 @@ export type Base =
   | "white"
   | "black"
   | "transparent"
-  | "current"
-  | Arbitary;
+  | "current";
 
 /**
  * Base color palette with opacity but without prefix
  */
-export type BaseWithOpacity = Base | `${Base}/${Opacity | Arbitary}`;
+export type BaseWithOpacity = Base | `${Base}/${Opacity}` | Arbitary;
 
 /**
  * Tailwind color with custom prefix
  */
 export type Color<Prefix extends string> = `${Prefix}-${BaseWithOpacity}`;
-
-/**
- * Tailwind color palette with extended hue
- */
-export type ExtendHue<
-  T extends Color<string>,
-  Options extends string
-> = T extends Color<infer Prefix>
-  ? `${Prefix}-${Hue | Options}-${Lightness}`
-  : T;
-
-/**
- * Tailwind color palette with extended color (without lightness)
- */
-export type ExtendBase<
-  T extends Color<string>,
-  Options extends string
-> = T extends Color<infer Prefix>
-  ? `${Prefix}-${Base | Options | `${Base | Options}/${Opacity | Arbitary}`}`
-  : T;
 
 /**
  * Tailwind default color prefixes
