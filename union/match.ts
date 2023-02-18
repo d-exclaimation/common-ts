@@ -50,7 +50,7 @@ export function match<In extends Distriminated<string>, Out>(
     | (Partial<Matches<In, Out>> & { "*": (input: In) => Out })
 ): Out {
   for (const [key, handler] of Object.entries(matchers)) {
-    if (input.__t === key) {
+    if (input.kind === key) {
       return (handler as (input: In) => Out)(input);
     }
   }
@@ -107,7 +107,7 @@ export function matches<In extends Distriminated<string>, Out>(
 ): (input: In) => Out {
   return (input) => {
     for (const [key, handler] of Object.entries(matchers)) {
-      if (input.__t === key) {
+      if (input.kind === key) {
         return (handler as (input: In) => Out)(input);
       }
     }
