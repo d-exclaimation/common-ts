@@ -10,7 +10,7 @@
  *
  * @template K The key type to identify the signature
  */
-export type Distriminated<K> = { readonly __t: K };
+export type Distriminated<K> = { readonly kind: K };
 
 /**
  * Union types from a definition of a key and payload object that can be uniquely identified with a signature
@@ -31,7 +31,7 @@ export type Union<Def extends Record<string, Record<string, unknown>>> = {
  */
 export type Narrow<
   Unity extends Distriminated<string>,
-  Key extends Unity["__t"]
+  Key extends Unity["kind"]
 > = Unity extends Distriminated<Key> ? Unity : never;
 
 /**
@@ -44,8 +44,8 @@ export type Narrow<
  */
 export type PayloadNarrow<
   Unity extends Distriminated<string>,
-  Key extends Unity["__t"]
-> = Omit<Narrow<Unity, Key>, "__t">;
+  Key extends Unity["kind"]
+> = Omit<Narrow<Unity, Key>, "kind">;
 
 /**
  * Object containing key and function pairs for all possible types in a union based on their signature
@@ -54,5 +54,5 @@ export type PayloadNarrow<
  * @template Out The return type of all functions
  */
 export type Matches<Unity extends Distriminated<string>, Out> = {
-  [Key in Unity["__t"]]: (input: Narrow<Unity, Key>) => Out;
+  [Key in Unity["kind"]]: (input: Narrow<Unity, Key>) => Out;
 };

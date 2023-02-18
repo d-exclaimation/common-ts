@@ -1,7 +1,7 @@
 {
   "name": "@d-exclaimation/common",
   "author": "d-exclaimation",
-  "version": "0.3.0",
+  "version": "0.4.0-alpha.1",
   "description": "Zero-dependency TypeScript utilties for Node.js, Deno, Web and anything that powered by V8",
   "license": "MIT",
   "repository": {
@@ -13,8 +13,8 @@
   },
   "homepage": "https://github.com/d-exclaimation/common-ts#readme",
   "keywords": [
-    "typescript", 
-    "functional", 
+    "typescript",
+    "functional",
     "functional programming",
     "pipe",
     "zod",
@@ -40,7 +40,7 @@
     "./lib/*": {
       "import": "./lib/*/index.js",
       "require": "./lib/*/index.cjs",
-      "types": "./lib/*/index.d.ts" 
+      "types": "./lib/*/index.d.ts"
     },
     "./zod": {
       "import": "./lib/zod/index.js",
