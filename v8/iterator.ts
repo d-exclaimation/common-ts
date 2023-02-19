@@ -32,7 +32,7 @@ export class AsyncChannel<T> implements AsyncIterableIterator<T> {
     return { value: undefined, done: true };
   }
 
-  async throw?(e?: any): Promise<IteratorResult<T>> {
+  async throw(e?: any): Promise<IteratorResult<T>> {
     this.close("error");
     return Promise.reject(e);
   }
@@ -139,11 +139,11 @@ export class AsyncStream<T> implements AsyncIterableIterator<T> {
   }
 
   async return(): Promise<IteratorResult<T>> {
-    return { value: undefined, done: true };
+    return this.channel.return();
   }
 
-  async throw?(e?: any): Promise<IteratorResult<T>> {
-    return Promise.reject(e);
+  async throw(e?: any): Promise<IteratorResult<T>> {
+    return this.channel.throw(e);
   }
 
   /**
