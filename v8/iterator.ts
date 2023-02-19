@@ -2,14 +2,14 @@
 //  iterator.ts
 //  common
 //
-//  Created by d-exclaimation on 17 Feb 2023
+//  Created by d-exclaimation on 19 Feb 2023
 //
 
 /**
  * Async Channel implementation that allow yielding values and closing the channel without using generators
  * @template T The type of the channel
  */
-export class AsyncChannel<T> implements AsyncIterator<T> {
+export class AsyncChannel<T> implements AsyncIterableIterator<T> {
   private pullQueue: ((value: IteratorResult<T>) => void)[];
   private pushQueue: T[];
   private running: boolean;
@@ -117,7 +117,7 @@ export class AsyncChannel<T> implements AsyncIterator<T> {
    * Async Iterator
    * @returns Async Iterator
    */
-  public [Symbol.asyncIterator](): AsyncIterator<T> {
+  public [Symbol.asyncIterator](): AsyncIterableIterator<T> {
     return this;
   }
 }
@@ -126,7 +126,7 @@ export class AsyncChannel<T> implements AsyncIterator<T> {
  * Async Stream implementation that allow yielding values and closing the channel
  * @template T The type of the channel
  */
-export class AsyncStream<T> implements AsyncIterator<T> {
+export class AsyncStream<T> implements AsyncIterableIterator<T> {
   private channel: AsyncChannel<T>;
 
   constructor(exec: (cont: AsyncChannel<T>) => void) {
@@ -150,7 +150,7 @@ export class AsyncStream<T> implements AsyncIterator<T> {
    * Async Iterator
    * @returns Async Iterator
    */
-  public [Symbol.asyncIterator](): AsyncIterator<T> {
+  public [Symbol.asyncIterator](): AsyncIterableIterator<T> {
     return this.channel;
   }
 }
