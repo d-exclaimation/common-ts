@@ -13,9 +13,20 @@ type Add<T extends unknown[], Acc = 0> = T extends [infer Head, ...infer Tail]
 
 /**
  * Completely type-safe adding numbers together
+ *
+ * **Warning**:
+ * Max to 1000, as Typescript type recursion is limited to 1000
+ *
  * @param initial The initial value
  * @param args The other numbers to add
  * @returns The sum of all the numbers with complete type safety
+ *
+ *
+ * @example
+ * ```ts
+ * const a = add(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+ * //    ^? const a: 55
+ * ```
  */
 export function add<K, T extends number[]>(initial: K, ...args: T): Add<T, K>;
 export function add(...args: number[]): number {

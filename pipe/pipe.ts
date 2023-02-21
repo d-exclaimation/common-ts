@@ -169,7 +169,22 @@ export function pipe<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(
 /**
  * Pipe a value into 1 or many pipeable function
  */
-export function pipe<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(
+export function pipe<
+  T1,
+  T2,
+  T3,
+  T4,
+  T5,
+  T6,
+  T7,
+  T8,
+  T9,
+  T10,
+  T11,
+  T12,
+  T13,
+  T14
+>(
   input: T1,
   pipe1: PipeableFunc<T1, T2>,
   pipe2: PipeableFunc<T2, T3>,
@@ -183,8 +198,79 @@ export function pipe<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13>(
   pipe10: PipeableFunc<T10, T11>,
   pipe11: PipeableFunc<T11, T12>,
   pipe12: PipeableFunc<T12, T13>,
-  ...pipelines: PipeableFunc<any, any>[]
-): unknown;
+  pipe13: PipeableFunc<T13, T14>
+): T14;
+
+export function pipe<
+  T1,
+  T2,
+  T3,
+  T4,
+  T5,
+  T6,
+  T7,
+  T8,
+  T9,
+  T10,
+  T11,
+  T12,
+  T13,
+  T14,
+  T15
+>(
+  input: T1,
+  pipe1: PipeableFunc<T1, T2>,
+  pipe2: PipeableFunc<T2, T3>,
+  pipe3: PipeableFunc<T3, T4>,
+  pipe4: PipeableFunc<T4, T5>,
+  pipe5: PipeableFunc<T5, T6>,
+  pipe6: PipeableFunc<T6, T7>,
+  pipe7: PipeableFunc<T7, T8>,
+  pipe8: PipeableFunc<T8, T9>,
+  pipe9: PipeableFunc<T9, T10>,
+  pipe10: PipeableFunc<T10, T11>,
+  pipe11: PipeableFunc<T11, T12>,
+  pipe12: PipeableFunc<T12, T13>,
+  pipe13: PipeableFunc<T13, T14>,
+  pipe14: PipeableFunc<T14, T15>
+): T15;
+
+export function pipe<
+  T1,
+  T2,
+  T3,
+  T4,
+  T5,
+  T6,
+  T7,
+  T8,
+  T9,
+  T10,
+  T11,
+  T12,
+  T13,
+  T14,
+  T15,
+  T16
+>(
+  input: T1,
+  pipe1: PipeableFunc<T1, T2>,
+  pipe2: PipeableFunc<T2, T3>,
+  pipe3: PipeableFunc<T3, T4>,
+  pipe4: PipeableFunc<T4, T5>,
+  pipe5: PipeableFunc<T5, T6>,
+  pipe6: PipeableFunc<T6, T7>,
+  pipe7: PipeableFunc<T7, T8>,
+  pipe8: PipeableFunc<T8, T9>,
+  pipe9: PipeableFunc<T9, T10>,
+  pipe10: PipeableFunc<T10, T11>,
+  pipe11: PipeableFunc<T11, T12>,
+  pipe12: PipeableFunc<T12, T13>,
+  pipe13: PipeableFunc<T13, T14>,
+  pipe14: PipeableFunc<T14, T15>,
+  pipe15: PipeableFunc<T15, T16>
+): T16;
+
 export function pipe<T>(input: T, ...pipeline: PipeableFunc<any, any>[]): any;
 
 /**
