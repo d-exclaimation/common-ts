@@ -5,13 +5,6 @@
 //  Created by d-exclaimation on 22 Jan 2023
 //
 
-//
-//  zod.ts
-//  zod-types
-//
-//  Created by d-exclaimation on 21 Jan 2023
-//
-
 import type { z, ZodTypeAny } from "zod";
 import type { ZodExtensions } from "./types.js";
 
@@ -40,6 +33,7 @@ export function struct<
       },
       validate: (input: unknown) => t.safeParse(input).success,
       ...(extensions?.(t) ?? ({} as Extensions)),
+      ...(arg: z.infer<T>) => arg,
     }),
   });
 }
