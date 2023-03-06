@@ -30,5 +30,29 @@ export type Frozen<T> = T extends [infer Head]
  * @returns A frozen version of the same values
  */
 export function frz<T>(arg: T) {
+  if (arg instanceof Set) {
+    return Object.freeze({
+      ...arg,
+      add() {
+        throw new TypeError("Cannot add to frozen set");
+      },
+      clear() {
+        throw new TypeError("Cannot clear frozen set");
+      },
+    });
+  }
+
+  if (arg instanceof Map) {
+    return Object.freeze({
+      ...arg,
+      set() {
+        throw new TypeError("Cannot set to frozen map");
+      },
+      clear() {
+        throw new TypeError("Cannot clear frozen map");
+      },
+    });
+  }
+
   return Object.freeze(arg) as Frozen<T>;
 }
