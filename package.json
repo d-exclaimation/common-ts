@@ -1,7 +1,7 @@
 {
   "name": "@d-exclaimation/common",
   "author": "d-exclaimation",
-  "version": "0.4.0-beta.7",
+  "version": "0.4.0-beta.8",
   "description": "Zero-dependency TypeScript utilties for Node.js, Deno, Web and anything that powered by V8",
   "license": "MIT",
   "repository": {
@@ -85,11 +85,13 @@
   "scripts": {
     "prepublish": "pnpm build",
     "build": "tsup --format cjs,esm --treeshake --splitting --dts",
-    "lint": "tsc"
+    "lint": "tsc",
+    "test": "tsx test.ts"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",
     "tsup": "^6.5.0",
+    "tsx": "^3.12.3",
     "typescript": "^4.9.4",
     "zod": "^3.20.2"
   },
