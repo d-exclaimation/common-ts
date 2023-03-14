@@ -101,8 +101,8 @@ export const Result = {
 /**
  * Ok is a type that represents a successful result.
  */
-type Ok<T> = Narrow<Result<T, never>, "ok">;
-const Ok = <T>(data: T): Ok<T> =>
+export type Ok<T> = Narrow<Result<T, never>, "ok">;
+export const Ok = <T>(data: T): Ok<T> =>
   kind("ok", {
     data,
     unwrap: () => data,
@@ -116,8 +116,8 @@ const Ok = <T>(data: T): Ok<T> =>
 /**
  * Err is a type that represents a failed result.
  */
-type Err<E> = Narrow<Result<never, E>, "err">;
-const Err = <E>(error: E): Err<E> =>
+export type Err<E> = Narrow<Result<never, E>, "err">;
+export const Err = <E>(error: E): Err<E> =>
   kind("err", {
     error,
     unwrap: () => {
