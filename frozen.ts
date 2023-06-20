@@ -18,7 +18,7 @@ export type Frozen<T> = T extends [infer Head]
   ? ReadonlyArray<Frozen<K>>
   : T extends Map<infer K, infer V>
   ? ReadonlyMap<K, V>
-  : T extends {}
+  : T extends Record<string | number | symbol, any>
   ? {
       readonly [Key in keyof T]: Frozen<T[Key]>;
     }
