@@ -145,6 +145,34 @@ export function partition<T>(arr: T[], predicate: (val: T) => boolean) {
 }
 
 /**
+ * Group an array by a given key
+ * @param arr The array to group
+ * @param key The key to group by
+ * @returns An object of arrays grouped by the key
+ */
+export function groupBy<T, K extends string | number | symbol>(
+  arr: T[],
+  key: (val: T) => K
+) {
+  return arr.reduce((acc, val) => {
+    const k = key(val);
+    if (!acc[k]) acc[k] = [];
+    acc[k].push(val);
+    return acc;
+  }, {} as Record<K, T[]>);
+}
+
+/**
+ * Zip two arrays together
+ * @param arr1 The first array
+ * @param arr2 The second array
+ * @returns An array of tuples
+ */
+export function zip<T, U>(arr1: T[], arr2: U[]): [T, U][] {
+  return arr1.map((val, i) => [val, arr2[i]]);
+}
+
+/**
  * Remove an element from an array
  * @param arr - Array to remove from
  * @param element - Element to remove
