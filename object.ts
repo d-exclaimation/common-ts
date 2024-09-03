@@ -5,6 +5,8 @@
 //  Created by d-exclaimation on 17 Feb 2023
 //
 
+import { Call, Entry } from "./types.js";
+
 export type Entries<T extends Record<string | number | symbol, any>> = Array<
   {
     [K in keyof T]: [K, T[K]];
@@ -43,24 +45,76 @@ export function values<T extends Record<string | number | symbol, any>>(
 }
 
 export type MapValues<
-  O extends Record<string | number | symbol, any>,
-  B extends (value: keyof O) => any
+  Obj extends Record<string | number | symbol, any>,
+  Fn extends (arg: Obj[keyof Obj], key: keyof Obj) => any
 > = {
-  [Key in keyof O]: B extends (value: Key) => infer R ? R : O[Key];
+  [K in keyof Obj]: Call<Fn, Obj[K]>;
 };
 
 /**
- * Map the values of an object
- * @param obj The object to map
- * @param map The mapping function
- * @returns The mapped object
+ * Map values of an object by a function
+ * @param obj The object to be transformed
+ * @param fn The mapping function that takes the value and key
+ * @returns The transformed object
  */
-export function mapValues<
-  T extends Record<string | number | symbol, any>,
-  Map extends (value: keyof T) => any
->(obj: T, map: Map): MapValues<T, Map> {
-  return entries(obj).map(([key, value]) => [key, map(value)]) as MapValues<
-    T,
-    Map
-  >;
-}
+export const mapValues = <
+  Obj extends Record<string | number | symbol, any>,
+  Fn extends (arg: Obj[keyof Obj], key: keyof Obj) => any
+>(
+  obj: Obj,
+  fn: Fn
+) => {
+  const res = {} as MapValues<Obj, Fn>;
+  for (const key in obj) {
+    const value = obj[key];
+    res[key] = fn(value, key);
+  }
+  return res;
+};
+
+export type MapEntries<
+  Obj extends Record<string | number | symbol, any>,
+  Fn extends (entry: any) => [string | number | symbol, any]
+> = {
+  [K in keyof Obj as MapEntriesKey<Obj, Fn, K>]: MapEntriesValue<Obj, Fn, K>;
+};
+
+export type MapEntriesKey<
+  Obj extends Record<string | number | symbol, any>,
+  Fn extends (entry: any) => [string | number | symbol, any],
+  K extends keyof Obj
+> = Call<Fn, Entry<K, Obj[K]>>[0];
+
+export type MapEntriesValue<
+  Obj extends Record<string | number | symbol, any>,
+  Fn extends (entry: any) => [string | number | symbol, any],
+  K extends keyof Obj
+> = Call<Fn, Entry<K, Obj[K]>>[1];
+
+export type MapEntriesFn<Obj extends Record<string | number | symbol, any>> = (
+  arg: {
+    [K in keyof Obj]: Entry<K, Obj[K]>;
+  }[keyof Obj]
+) => [string | number | symbol, any];
+
+/**
+ * Map key and value pairs (entries) of an object by a function
+ * @param obj The object to be transformed
+ * @param fn The mapping function that takes the key and value pair (entry)
+ * @returns The transformed object
+ */
+export const mapEntries = <
+  Obj extends Record<string | number | symbol, any>,
+  Fn extends MapEntriesFn<Obj>
+>(
+  obj: Obj,
+  fn: Fn
+) => {
+  const res = {} as any;
+  for (const key in obj) {
+    const value = obj[key];
+    const [k, v] = fn({ key, value });
+    res[k] = v;
+  }
+  return res as MapEntries<Obj, Fn>;
+};
